@@ -8,16 +8,17 @@ const initialGameBoard = [
 // first li repressent rows here
 // then we want grid,
 
-export default function GameBoard() {
+export default function GameBoard({onSelectSquare, activePlayerSymbol}) {
   const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
   function handleSelectBox(rowIndex, colIndex) {
     setGameBoard((prevGameBoard)=>{
         // state that depends on objects and arrays should be updated in an immutable way
         const updateGameBoard=[...prevGameBoard.map((initialArray)=>[...initialArray])];
-        updateGameBoard[rowIndex][colIndex]="X";
+        updateGameBoard[rowIndex][colIndex]=activePlayerSymbol;
         return updateGameBoard;
     })
+    onSelectSquare();
   }
   return (
     <ol id="game-board">
