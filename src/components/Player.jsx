@@ -19,6 +19,7 @@ export default function Player({initialName,symbol}) {
 
   let editablePlayerName=<span className="player-name">{playerName}</span>;
   if(isSetting){
+    // this is "two way binding"- onChange-> value out, value={} value gets in
     editablePlayerName=<input type="text" required value={playerName} onChange={handleChange}/>
     // playerName=<input type="text" required defaultValue={name}/>
   }
